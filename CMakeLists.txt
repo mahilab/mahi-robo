@@ -37,6 +37,20 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
 endif()
 
 #===============================================================================
+# 3RD PARTY DEPENDENCIES
+#===============================================================================
+
+# JSON
+set(JSON_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/json/include)
+
+# FMT
+add_subdirectory(3rdparty/fmt)
+install(TARGETS fmt EXPORT mahi-robo-targets LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+
+# CXXOPTS
+set(CXXOPTS_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/cxxopts/include)
+
+#===============================================================================
 # CREATE LIBRARY
 #===============================================================================
 
