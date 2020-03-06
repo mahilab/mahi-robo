@@ -164,7 +164,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=mahi-util
+CMAKE_PROJECT_NAME:STATIC=mahi-robo
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=1.0.0
@@ -252,6 +252,9 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Turn ON to build example executable(s)
+MAHI_ROBO_EXAMPLES:BOOL=ON
+
 //Turn ON to build experimental coroutine support
 MAHI_UTIL_COROUTINES:BOOL=ON
 
@@ -263,6 +266,12 @@ MAHI_UTIL_EXAMPLES:BOOL=ON
 
 //Turn ON to enable filename capture in logs
 MAHI_UTIL_LOG_CAPTURE_FILE:BOOL=ON
+
+//Value Computed by CMake
+mahi-robo_BINARY_DIR:STATIC=C:/Git/mahi-robo/build
+
+//Value Computed by CMake
+mahi-robo_SOURCE_DIR:STATIC=C:/Git/mahi-robo
 
 //Value Computed by CMake
 mahi-util_BINARY_DIR:STATIC=C:/Git/mahi-robo/build
@@ -393,7 +402,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MT
 CMAKE_MT-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3
 //Platform information initialized
 CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_RC_COMPILER
