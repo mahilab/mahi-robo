@@ -4,7 +4,8 @@
 #include <MEL/Logging/Log.hpp>
 #include <iostream>
 
-namespace mel {
+namespace mahi {
+namespace robo {
 
  Joint::Joint(const std::string& name,
         Actuator* actuator,
@@ -152,4 +153,5 @@ bool Joint::any_limit_exceeded() {
     return exceeded;
 }
 
-} // namespace mel
+} // namespace robo
+} // namespace mahi

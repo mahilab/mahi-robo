@@ -1,6 +1,7 @@
 #include <MEL/Mechatronics/Actuator.hpp>
 
-namespace mel {
+namespace mahi {
+namespace robo {
 
 Actuator::Actuator() : 
     Device("UNAMED_ACTUATOR"),
@@ -29,4 +30,5 @@ double Actuator::get_torque_sense() const {
     return 0.0;
 }
 
-} // namespace mel
+} // namespace robo
+} // namespace mahi

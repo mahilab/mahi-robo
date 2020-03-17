@@ -1,7 +1,6 @@
 // MIT License
 //
-// MEL - Mechatronics Engine & Library
-// Copyright (c) 2019 Mechatronics and Haptic Interfaces Lab - Rice University
+// Copyright (c) 2020 Mechatronics and Haptic Interfaces Lab - Rice University
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -16,22 +15,16 @@
 // Author(s): Evan Pezent (epezent@rice.edu)
 
 #pragma once
-#include <MEL/Mechatronics/ForceSensor.hpp>
-#include <MEL/Mechatronics/TorqueSensor.hpp>
-#include <MEL/Daq/Input.hpp>
+#include <Mahi/Robo/Mechatronics/ForceSensor.hpp>
+#include <Mahi/Robo/Mechatronics/TorqueSensor.hpp>
 #include <array>
 
-namespace mel {
-
-//==============================================================================
-// CLASS DECLARATION
-//==============================================================================
+namespace mahi {
+namespace robo {
 
 /// Implements an ATI force/torque transducer
 class AtiSensor : public ForceSensor, public TorqueSensor {
-
 public:
-
     /// Calibration matrix data obtained from "UserAxis" elements
     /// in ATI supplied calibration file (e.g. "FTXXXXX.cal")
     struct Calibration {
@@ -44,51 +37,42 @@ public:
     };
 
 public:
-
     /// Constucts AtiSensor with unspecified channels and no calibration
     AtiSensor();
-
     /// Constructs AtiSensor with specified channels and loads calibration from filepath
-    AtiSensor(std::vector <Input<Voltage>::Channel> channels, const std::string& filepath);
-
+    AtiSensor(const double* ch0, const double* ch1, const double* ch2, const double* ch3,
+              const double* ch4, const double* ch5, const std::string& filepath);
     /// Constructs AtiSensor from specified channels and manual calibration
-    AtiSensor(std::vector<Input<Voltage>::Channel> channels, Calibration calibration);
-
+    AtiSensor(const double* ch0, const double* ch1, const double* ch2, const double* ch3,
+              const double* ch4, const double* ch5, Calibration calibration);
     /// Sets the voltages channels associated with this ATI sensor
-    void set_channels(std::vector<Input<Voltage>::Channel> channels);
-
+    void set_channels(const double* ch0, const double* ch1, const double* ch2, const double* ch3,
+                      const double* ch4, const double* ch5);
     /// Loads calibration from ATI calibration file (e.g. "FTXXXXX.cal")
     bool load_calibration(const std::string& filepath);
-
     /// Allows for manually setting calibration
     void set_calibration(Calibration calibration);
-
     /// Returns force along speficied axis
     double get_force(Axis axis) override;
-
     /// Returns forces along X, Z, and Z axes
     std::vector<double> get_forces() override;
-
     /// Returns torque along speficied axis
     double get_torque(Axis axis) override;
-
     /// Returns torque along X, Z, and Z axes
     std::vector<double> get_torques() override;
-
     /// Zeros all forces and torques at current preload
     void zero();
 
 private:
-
     /// Updates biased voltages
     void update_biased_voltages();
 
 private:
-
-    std::vector<Input<Voltage>::Channel> channels_; ///< raw voltage channels
-    Calibration calibration_;                       ///< calibration matrix
-    std::array<double, 6> bias_;                    ///< bias vector
-    std::array<double, 6> bSTG_;                    ///< biased strain gauge voltages
+    std::vector<const double*> channels_;     ///< raw voltage channels
+    Calibration                calibration_;  ///< calibration matrix
+    std::array<double, 6>      bias_;         ///< bias vector
+    std::array<double, 6>      bSTG_;         ///< biased strain gauge voltages
 };
 
-} // namespace mel
+}  // namespace robo
+}  // namespace mahi

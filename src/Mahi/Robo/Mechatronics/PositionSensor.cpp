@@ -2,7 +2,8 @@
 #include <iostream>
 #include <string>
 
-namespace mel {
+namespace mahi {
+namespace robo {
 
 //==============================================================================
 // CLASS DEFINITIONS
@@ -20,4 +21,5 @@ double PositionSensor::get_position() {
     return position_;
 }
 
-} // namespace mel
+} // namespace robo
+} // namespace mahi

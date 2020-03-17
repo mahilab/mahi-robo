@@ -1,7 +1,8 @@
 #include <MEL/Mechatronics/Robot.hpp>
 #include <MEL/Core/Console.hpp>
 
-namespace mel {
+namespace mahi {
+namespace robo {
 
 Robot::Robot(const std::string& name) :
     Device(name)
@@ -95,4 +96,5 @@ bool Robot::any_limit_exceeded() {
     return exceeded;
 }
 
-} // namespace mel
+} // namespace robo
+} // namespace mahi

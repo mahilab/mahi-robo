@@ -12,31 +12,35 @@
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
 //
-// Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
-//            Evan Pezent (epezent@rice.edu)
+// Author(s): Evan Pezent (epezent@rice.edu)
+//            Craig McDonald (craig.g.mcdonald@gmail.com)
 
 #pragma once
 
-#include <Mahi/Robo/Types.hpp>
-#include <vector>
+#include <MEL/Core/Device.hpp>
 
 namespace mahi {
 namespace robo {
 
-class ForceSensor {
+//==============================================================================
+// CLASS DECLARATION
+//==============================================================================
+
+class VelocitySensor {
 public:
-    /// Default constructor
-    ForceSensor();
+    /// Constructor
+    VelocitySensor();
+
     /// Destructor
-    virtual ~ForceSensor();
-    /// Returns force along speficied axis
-    virtual double get_force(Axis axis) = 0;
-    /// Returns forces along X, Z, and Z axes
-    virtual std::vector<double> get_forces() = 0;
+    virtual ~VelocitySensor();
+
+    /// This function should return the velocity of the VelocitySensor
+    virtual double get_velocity() = 0;
 
 protected:
-    std::vector<double> forces_;  ///< measured forces
+    double velocity_;  ///< stores the VelocitySensor velocity since the last
+                       ///< call to get_velocity()
 };
 
-}  // namespace robo
-}  // namespace mahi
+} // namespace robo
+} // namespace mahi

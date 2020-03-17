@@ -2,7 +2,8 @@
 #include <MEL/Core/Console.hpp>
 #include <MEL/Logging/Log.hpp>
 
-namespace mel {
+namespace mahi {
+namespace robo {
 
 VoltPaqX4::VoltPaqX4(const std::vector<DigitalOutput::Channel>& enable_channels,
     const std::vector<AnalogOutput::Channel>&  command_channels,
@@ -37,4 +38,5 @@ bool VoltPaqX4::on_disable() {
     return success;
 }
 
-} // namespace mel
+} // namespace robo
+} // namespace mahi

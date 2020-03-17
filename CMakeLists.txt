@@ -40,15 +40,15 @@ endif()
 # 3RD PARTY DEPENDENCIES
 #===============================================================================
 
-# JSON
-set(JSON_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/json/include)
+set(EIGEN_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/Eigen3/include)
 
-# FMT
-add_subdirectory(3rdparty/fmt)
-install(TARGETS fmt EXPORT mahi-robo-targets LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+#===============================================================================
+# MAHI UTIL
+#===============================================================================
 
-# CXXOPTS
-set(CXXOPTS_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/cxxopts/include)
+include(FetchContent) 
+FetchContent_Declare(mahi-util GIT_REPOSITORY https://github.com/mahilab/mahi-util.git) 
+FetchContent_MakeAvailable(mahi-util)
 
 #===============================================================================
 # CREATE LIBRARY
@@ -64,26 +64,6 @@ set_target_properties(robo PROPERTIES OUTPUT_NAME "mahi-robo")
 # defines
 target_compile_definitions(robo PUBLIC MAHI_ROBO) # for compatibility checks
 
-# set necessary coroutine options
-if(MAHI_ROBO_COROUTINES)
-    target_compile_definitions(robo PUBLIC MAHI_COROUTINES)
-    if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-        target_compile_options(robo PUBLIC "/await")
-    elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-        target_compile_options(robo PUBLIC "-fcoroutines-ts")
-    endif()
-endif()
-
-# enable logger
-if (MAHI_ROBO_DEFAULT_LOG)
-    target_compile_definitions(robo PUBLIC MAHI_DEFAULT_LOG)
-endif()
-
-# enable logger file capture
-if(MAHI_ROBO_LOG_CAPTURE_FILE)
-    target_compile_definitions(robo PUBLIC MAHI_LOG_CAPTURE_FILE)
-endif()
-
 # add source files
 add_subdirectory(src/mahi/robo)
 
@@ -94,18 +74,13 @@ target_include_directories(robo
     PUBLIC
         $<INSTALL_INTERFACE:include>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<BUILD_INTERFACE:${JSON_INCLUDE_DIR}>
-        $<BUILD_INTERFACE:${CXXOPTS_INCLUDE_DIR}>
-        PRIVATE
+        $<BUILD_INTERFACE:${EIGEN_INCLUDE_DIR}>
+    PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
 # link libraries
-target_link_libraries(robo PUBLIC fmt::fmt)
-
-if(WIN32)
-    target_link_libraries(robo PUBLIC winmm Pdh Version)
-endif()
+target_link_libraries(robo PUBLIC mahi::util)
 
 #===============================================================================
 # WINDOWS ONLY
@@ -151,8 +126,7 @@ set(CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}${MAHI_INSTALL_POSTFIX}")
 
 # install headers
 install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-install(DIRECTORY ${JSON_INCLUDE_DIR}/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-install(DIRECTORY ${CXXOPTS_INCLUDE_DIR}/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(DIRECTORY ${EIGEN_INCLUDE_DIR}/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 # set where we want to install our config
 set(INSTALL_CONFIGDIR ${CMAKE_INSTALL_LIBDIR}/cmake/mahi-robo)

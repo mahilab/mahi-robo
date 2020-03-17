@@ -1,6 +1,7 @@
-#include <MEL/Mechatronics/TorqueSensor.hpp>
+#include <Mahi/Robo/Mechatronics/TorqueSensor.hpp>
 
-namespace mel {
+namespace mahi {
+namespace robo {
 
 TorqueSensor::TorqueSensor() :
     torques_(3, 0.0)
@@ -12,4 +13,5 @@ TorqueSensor::~TorqueSensor() {
 }
 
 
-} // namespace mel
+} // namespace robo
+} // namespace mahi

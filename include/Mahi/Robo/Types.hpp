@@ -12,31 +12,20 @@
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
 //
-// Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
-//            Evan Pezent (epezent@rice.edu)
+// Author(s): Evan Pezent (epezent@rice.edu)
+//            Craig McDonald (craig.g.mcdonald@gmail.com)
 
 #pragma once
-
-#include <Mahi/Robo/Types.hpp>
-#include <vector>
 
 namespace mahi {
 namespace robo {
 
-class ForceSensor {
-public:
-    /// Default constructor
-    ForceSensor();
-    /// Destructor
-    virtual ~ForceSensor();
-    /// Returns force along speficied axis
-    virtual double get_force(Axis axis) = 0;
-    /// Returns forces along X, Z, and Z axes
-    virtual std::vector<double> get_forces() = 0;
-
-protected:
-    std::vector<double> forces_;  ///< measured forces
+/// Represents an orthoganal axis
+enum Axis {
+    AxisX = 0,
+    AxisY = 1,
+    AxisZ = 2
 };
 
-}  // namespace robo
-}  // namespace mahi
+} // namespace robo
+} // namespace mahi

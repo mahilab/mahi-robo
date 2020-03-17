@@ -1,7 +1,6 @@
 // MIT License
 //
-// MEL - Mechatronics Engine & Library
-// Copyright (c) 2019 Mechatronics and Haptic Interfaces Lab - Rice University
+// Copyright (c) 2020 Mechatronics and Haptic Interfaces Lab - Rice University
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -17,34 +16,26 @@
 
 #pragma once
 
-#include <MEL/Core/Types.hpp>
+#include <Mahi/Robo/Types.hpp>
 #include <vector>
 
-namespace mel {
-
-//==============================================================================
-// CLASS DECLARATION
-//==============================================================================
+namespace mahi {
+namespace robo {
 
 class TorqueSensor {
 public:
-
     /// Constructor
     TorqueSensor();
-
     /// Destructor
     virtual ~TorqueSensor();
-
     /// Returns torque along speficied axis
     virtual double get_torque(Axis axis) = 0;
-
     /// Returns torques along X, Z, and Z axes
     virtual std::vector<double> get_torques() = 0;
 
 protected:
-
-    std::vector<double> torques_; ///< measured torques
-
+    std::vector<double> torques_;  ///< measured torques
 };
 
-}  // namespace mel
+}  // namespace robo
+}  // namespace mahi
