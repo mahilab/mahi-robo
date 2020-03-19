@@ -36,11 +36,17 @@ std::array<double, 6> get_values(const std::string& str) {
 
 }  // namespace
 
-AtiSensor::AtiSensor() {}
+AtiSensor::AtiSensor()
+{
+    bias_.fill(0);
+    bSTG_.fill(0);
+
+}
 
 AtiSensor::AtiSensor(const double* ch0, const double* ch1, const double* ch2, const double* ch3,
                      const double* ch4, const double* ch5, const std::string& filepath) :
-    channels_({ch0, ch1, ch2, ch3, ch4, ch5}) {
+    channels_({ch0, ch1, ch2, ch3, ch4, ch5}) 
+{
     load_calibration(filepath);
 }
 

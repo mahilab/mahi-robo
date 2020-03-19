@@ -52,11 +52,11 @@ public:
     bool load_calibration(const std::string& filepath);
     /// Allows for manually setting calibration
     void set_calibration(Calibration calibration);
-    /// Returns force along speficied axis
+    /// Returns force along specified axis
     double get_force(Axis axis) override;
     /// Returns forces along X, Z, and Z axes
     std::vector<double> get_forces() override;
-    /// Returns torque along speficied axis
+    /// Returns torque along specifed axis
     double get_torque(Axis axis) override;
     /// Returns torque along X, Z, and Z axes
     std::vector<double> get_torques() override;
