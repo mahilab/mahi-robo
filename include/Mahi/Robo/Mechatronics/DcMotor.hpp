@@ -23,7 +23,7 @@ namespace mahi {
 namespace robo {
 
 /// Encapsulates a brushed or brushless DC Motor
-class DcMotor : util::Device {
+class DcMotor : public util::Device {
 public:
     /// Default Constructor
     DcMotor();
