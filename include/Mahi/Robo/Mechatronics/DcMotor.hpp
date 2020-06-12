@@ -52,7 +52,7 @@ protected:
 public:
     double kt;  ///< torque constant of the Motor [torque/current]
 protected:
-    mutable double torque_command_ = 0;      ///< Stores the Actuator torque since the
+    mutable double torque_command_;      ///< Stores the Actuator torque since the
                                          ///< last call to set_torque()
     CurrentAmplifier* amplifier_;        ///< the current amplifier controlling the motor
     Limiter           current_limiter_;  ///< the Motor current limiter

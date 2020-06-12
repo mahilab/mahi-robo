@@ -7,11 +7,11 @@ using namespace mahi::util;
 namespace mahi {
 namespace robo {
 
-DcMotor::DcMotor() : Device("UNAMED_DC_MOTOR"), kt(0.0), amplifier_(nullptr), current_limiter_() {}
+DcMotor::DcMotor() : Device("UNAMED_DC_MOTOR"), kt(0.0), amplifier_(nullptr), current_limiter_(),torque_command_(0.0) {}
 
 DcMotor::DcMotor(const std::string& name, double _kt, CurrentAmplifier* amplifier,
                  Limiter current_limiter) :
-    Device(name), kt(_kt), amplifier_(amplifier), current_limiter_(current_limiter) {}
+    Device(name), kt(_kt), amplifier_(amplifier), current_limiter_(current_limiter),torque_command_(0.0) {}
 
 bool DcMotor::on_enable() {
     if (amplifier_) {
