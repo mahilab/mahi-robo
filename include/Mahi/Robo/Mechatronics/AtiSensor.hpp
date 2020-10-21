@@ -18,6 +18,7 @@
 #include <Mahi/Robo/Mechatronics/ForceSensor.hpp>
 #include <Mahi/Robo/Mechatronics/TorqueSensor.hpp>
 #include <array>
+#include <string>
 
 namespace mahi {
 namespace robo {
