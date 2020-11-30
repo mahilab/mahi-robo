@@ -10,3 +10,5 @@ macro(mahi_robo_example target)
     set_target_properties(${target} PROPERTIES FOLDER "Examples")
     set_target_properties(${target} PROPERTIES DEBUG_POSTFIX -d)
 endmacro(mahi_robo_example)
+
+mahi_robo_example(trajectory)

@@ -1,2 +1,3 @@
 add_subdirectory(Control)
 add_subdirectory(Mechatronics)
+add_subdirectory(Trajectories)
