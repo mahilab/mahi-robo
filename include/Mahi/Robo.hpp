@@ -5,6 +5,7 @@
 #include <Mahi/Robo/Control/PidController.hpp>
 
 #include <Mahi/Robo/Mechatronics/AtiSensor.hpp>
+#include <Mahi/Robo/Mechatronics/AIForceSensor.hpp>
 #include <Mahi/Robo/Mechatronics/CurrentAmplifier.hpp>
 #include <Mahi/Robo/Mechatronics/DcMotor.hpp>
 #include <Mahi/Robo/Mechatronics/ForceSensor.hpp>

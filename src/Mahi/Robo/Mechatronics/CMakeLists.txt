@@ -1,6 +1,7 @@
 target_sources(robo
     PRIVATE
         AtiSensor.cpp
+        AIForceSensor.cpp
         CurrentAmplifier.cpp
         DcMotor.cpp
         ForceSensor.cpp
