@@ -35,9 +35,7 @@ public:
     virtual double get_force(Axis axis) = 0;
     /// Returns forces along X, Z, and Z axes
     virtual std::vector<double> get_forces() = 0;
-    void zero(){
-        LOG(mahi::util::Warning) << "Using the default template zero in ForceSensor.hpp in mahi-robo. It is an empty function.";
-    }
+    virtual void zero() = 0;
 
 protected:
     std::vector<double> forces_;  ///< measured forces
