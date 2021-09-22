@@ -62,7 +62,7 @@ public:
     /// Returns torque along X, Z, and Z axes
     std::vector<double> get_torques() override;
     /// Zeros all forces and torques at current preload
-    void zero();
+    void zero() override;
 
 private:
     /// Updates biased voltages
